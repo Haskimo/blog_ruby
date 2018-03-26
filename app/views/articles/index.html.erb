@@ -1,10 +1,34 @@
-<h1 style="margin:20px;text-align:center">Liste des livres</h1>
+<h1 style="margin:20px;text-align:center">Liste des articles</h1>
 <div class="container">
   <ul>
     <% @articles.each do |article| %>
-      <li class="list-group-item" style="text-decoration:none;text-align:center">
-        <h3><a href="/articles/<%= article.id %>"><%= article.title%></a></h3>
+      <li style="list-style-type:none;text-align:center;margin:5px 0px;border:2px solid black;border-radius:5px">
+        <a class="list-group-item" href="/articles/<%= article.id %>">
+          <h3><%= article.title %></h3>
+          <p>Par : <%= article.author %></p>
+        </a>
       </li>
     <% end %>
   </ul>
+</div>
+<br><br><br><br>
+<h1 style="margin:20px;text-align:center">Créer un autre article</h1>
+<div class="row">
+  <div class="col-md-10 col-sm-offset-2">
+  <%= form_tag "/articles", method: "post" do %>
+    <label for"author">Votre nom (auteur) : </label>
+    <input type="text" name="author" value="Jean-Klaus VALERY">
+    <label for"title">Titre de votre article : </label>
+    <input type="text" name="title" value="Titre de mon article">
+    <br><br>
+    <label for"content">Contenu de votre article : </label>
+    <br>
+    <textarea style="width:80%;height:200px" name="content"/>Ici votre texte</textarea>
+    <br>
+    <button class="btn btn-success" type="submit"/>
+      <span class="glyphicon glyphicon-plus-sign"> Créer un article</span>
+    </button>
+    <br><br><br>
+  <% end %>
+  </div>
 </div>
