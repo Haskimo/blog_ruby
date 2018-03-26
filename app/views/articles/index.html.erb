@@ -1,0 +1,10 @@
+<h1 style="margin:20px;text-align:center">Liste des livres</h1>
+<div class="container">
+  <ul>
+    <% @articles.each do |article| %>
+      <li class="list-group-item" style="text-decoration:none;text-align:center">
+        <h3><a href="/articles/<%= article.id %>"><%= article.title%></a></h3>
+      </li>
+    <% end %>
+  </ul>
+</div>

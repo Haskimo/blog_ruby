@@ -1,0 +1,17 @@
+<h1 style="margin:20px">Mon article :</h1>
+<div class="container" style="width:80%;border:2px solid black;background-color:lightgrey">
+  <h3 style="font-style:bold;font-size:28px"><%= @this_article.title %></h3>
+  <p style="font-size:20px"><%= @this_article.content %></p>
+  <p style="font-style:italic;float:right">- <%= @this_article.author %></p>
+  <br><br><br>
+  <%= form_tag "/articles/#{@this_article.id}", method: "delete" do %>
+    <button type="submit" class="btn btn-danger" style="display:block;margin:auto">
+      <span class="glyphicon glyphicon-remove"> Supprimer</span>
+    </button>
+  <% end %>
+  <br>
+</div>
+<br><br>
+<div >
+  <a href="/articles" style="width:300px;display:block;margin:auto" class="btn btn-primary">Retourner à l’index des articles</a>
+</div>
