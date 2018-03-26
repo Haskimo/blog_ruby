@@ -5,6 +5,9 @@
       <li style="list-style-type:none;text-align:center;margin:5px 0px;border:2px solid black;border-radius:5px">
         <a class="list-group-item" href="/articles/<%= article.id %>">
           <h3><%= article.title %></h3>
+          <% if article.category %>
+            <p>(<%= article.category.name %>)<p>
+          <% end %>
           <p>Par : <%= article.author %></p>
         </a>
       </li>
@@ -22,7 +25,11 @@
     <input type="text" name="title" value="Titre de mon article">
     <br><br>
     <label for"content">Contenu de votre article : </label>
-    <br>
+    <select name="category_id" style="margin-left:40%">
+      <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
     <textarea style="width:80%;height:200px" name="content"/>Ici votre texte</textarea>
     <br>
     <button class="btn btn-success" type="submit"/>

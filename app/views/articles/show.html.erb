@@ -1,9 +1,12 @@
 <h1 style="margin:20px">Mon article :</h1>
 <div class="container" style="width:80%;border:2px solid black;background-color:lightgrey">
   <h3 style="font-style:bold;font-size:28px"><%= @this_article.title %></h3>
+  <% if @this_article.category %>
+    <p>(<%= @this_article.category.name %>)<p>
+  <% end %>
   <p style="font-size:20px"><%= @this_article.content %></p>
   <p style="font-style:italic;float:right">- <%= @this_article.author %></p>
-  <br><br><br>
+  <br><br>
   <%= form_tag "/articles/#{@this_article.id}", method: "delete" do %>
     <button type="submit" class="btn btn-danger" style="display:block;margin:auto">
       <span class="glyphicon glyphicon-remove-sign"> Supprimer</span>
@@ -11,7 +14,43 @@
   <% end %>
   <br>
 </div>
-<br><br>
+<br>
+<div class="container" style="width:80%">
+  <%= form_tag "/articles/#{@this_article.id}", method: "patch" do %>
+    <label for"author">Auteur : </label>
+    <input type="text" name="author" value="<%= @this_article.author %>" />
+    <label for"title">Titre de votre article : </label>
+    <input type="text" name="title" value="<%= @this_article.title %>">
+    <span style="color:red"><%= @this_article.errors[:title].first %></span>
+    <br>
+    <label for"content">Contenu de votre article : </label>
+    <select name="category_id" style="margin-left:40%">
+      <% @categories.each do |category| %>
+        <% if @this_article.category_id == category.id %>
+          <option selected value="<%= category.id %>"><%= category.name %></option>
+        <% else %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      <% end %>
+    </select>
+    <br>
+    <textarea style="width:80%;height:200px" name="content"/><%=@this_article.content%></textarea>
+    <input type="submit" value="Modifier l'article" />
+  <% end %>
+
+
+
+
+
+
+
+  <br><br>
+
+
+
+  <br>
+</div>
+<br>
 <div >
   <a href="/articles" style="width:300px;display:block;margin:auto" class="btn btn-primary">Retourner à l’index des articles</a>
 </div>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post 'articles' => 'articles#create' #Formulaire vers la route articles
   patch 'articles/:id' => 'articles#update' #Methode pour modifier des données
   delete 'articles/:id' => 'articles#destroy' #Methode pour supprimer des données
-  get '' => 'articles#index'
-  
+  root 'articles#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
