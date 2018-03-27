@@ -10,12 +10,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body style="background-color:lightgreen">
-<!--
-Article.create title: "Le premier article", author: "Jean Caisse", content: "textetextextextex", category_id: 1
-Article.create title: "Le second article", author: "Alain Tension", content: "Le texte de notre article est le suivant...", category_id: 1
-Article.create title: "Le meilleur article jamais écrit", author: "Jul Bescherelle", content: "j'lev d meuf et der moto avc mon krew", category_id: 2
--->
+<body>
+
 <%= yield %>
 
 </body>

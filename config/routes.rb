@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'articles/:id' => 'articles#show'
 
   post 'articles' => 'articles#create' #Formulaire vers la route articles
-  patch 'articles/:id' => 'articles#update' #Methode pour modifier des données
+  post 'articles/:id' => 'articles#addComment' #Methode pour ajouter un commentaire
   delete 'articles/:id' => 'articles#destroy' #Methode pour supprimer des données
   root 'articles#index'
 

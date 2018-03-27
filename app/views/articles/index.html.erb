@@ -1,5 +1,6 @@
 <h1 style="margin:20px;text-align:center">Liste des articles</h1>
 <div class="container">
+  <%= paginate @articles %>
   <ul>
     <% @articles.each do |article| %>
       <li style="list-style-type:none;text-align:center;margin:5px 0px;border:2px solid black;border-radius:5px">
@@ -20,9 +21,9 @@
   <div class="col-md-10 col-sm-offset-2">
   <%= form_tag "/articles", method: "post" do %>
     <label for"author">Votre nom (auteur) : </label>
-    <input type="text" name="author" value="Jean-Klaus VALERY">
+    <input type="text" name="author">
     <label for"title">Titre de votre article : </label>
-    <input type="text" name="title" value="Titre de mon article">
+    <input type="text" name="title">
     <br><br>
     <label for"content">Contenu de votre article : </label>
     <select name="category_id" style="margin-left:40%">
@@ -30,7 +31,7 @@
         <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
     </select>
-    <textarea style="width:80%;height:200px" name="content"/>Ici votre texte</textarea>
+    <textarea style="width:80%;height:200px" name="content"/></textarea>
     <br>
     <button class="btn btn-success" type="submit"/>
       <span class="glyphicon glyphicon-plus-sign"> Créer un article</span>
